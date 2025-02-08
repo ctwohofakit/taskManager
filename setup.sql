@@ -30,4 +30,9 @@ INSERT INTO task (
     "Buy groceries",
     "Go to the supermarket and buy groceries",
     "We need: eggs, bacon and tomatoes"
+),
+(
+    "Buy",
+    "Go to the supermarket",
+    "We need: eggs, bacon"
 );

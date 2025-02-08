@@ -71,7 +71,8 @@ def update_by_id(task_data, task_id):
         task_data.get("name"),
         task_data.get("summary"),
         task_data.get("description"),
-        task_data.get("is_done")
+        task_data.get("is_done"),
+        task_id
     )
     conn=get_db()
     conn.execute(statement, task_tuple)

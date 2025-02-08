@@ -10,16 +10,17 @@ app = Flask(__name__)
 #ReST=representation State Trasnder
 #is an architectural desgin pattern that helps design out API (services)
 
+#all tasks
 @app.get("/")
 @app.get("/tasks")
 def get_all_tasks():
     out = {
-        "task": task.scan(),
+        "tasks": task.scan(),
         "ok": True
     }
     return out
 
-
+#single task get
 @app.get("/tasks/<int:pk>")#path--type conversion int
 def get_single_task(pk):#primary key
     out = {
@@ -28,23 +29,24 @@ def get_single_task(pk):#primary key
     }
     return out
 
-
+#single task create
 @app.post("/tasks")
-def create_task():#primary key
-    task_data=request.json
-    task.create_task(task_data)
-    return"", 201
+def create_task():
+    task_data=request.json #extracts the JSON
+    task.create_task(task_data) 
+    return"", 204
 
-
-
+#single task delete
 @app.delete("/tasks/<int:pk>")#path--type conversion int
 def delete_by_id(pk):#primary key
     task.delete_by_id(pk)
     return "", 204
 
-
+#single task udpate
 @app.put("/tasks/<int:pk>")
 def update_task(pk):
-    task_data=request.json
+    task_data=request.json #extracts the JSON
     task.update_by_id(task_data, pk)
     return"", 204
+
+
